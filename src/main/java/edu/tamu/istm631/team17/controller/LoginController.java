@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.tamu.istm631.team17.models.Person;
-import edu.tamu.istm631.team17.repo.UserRepo;
+import edu.tamu.istm631.team17.repo.PersonRepo;
 
 
 
@@ -23,7 +23,7 @@ public class LoginController
 {
 
 	@Autowired 
-	private UserRepo userRepo;
+	private PersonRepo userRepo;
 
 	@PostMapping(path="/add") 
 	public @ResponseBody String addNewUser (@RequestBody Person user) {

@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import edu.tamu.istm631.team17.models.Person;
 
-public interface UserRepo extends CrudRepository<Person, Integer>
+public interface PersonRepo extends CrudRepository<Person, Integer>
 {
 
     List<Person> findByemailid(String emailid);
