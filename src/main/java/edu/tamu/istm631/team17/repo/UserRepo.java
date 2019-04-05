@@ -13,7 +13,7 @@ public interface UserRepo extends CrudRepository<Person, Integer>
 
     List<Person> findByemailid(String emailid);
     
-    @Query("SELECT u FROM User u WHERE LOWER(u.emailid) = LOWER(:emailid) and u.password = :password")
+    @Query("SELECT u FROM Person u WHERE LOWER(u.emailid) = LOWER(:emailid) and u.password = :password")
     public Person authenticate(@Param("emailid") String emailid, @Param("password") String password);
 
 }
