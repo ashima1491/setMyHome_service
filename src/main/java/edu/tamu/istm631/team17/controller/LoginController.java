@@ -44,6 +44,13 @@ public class LoginController
 		return userRepo.findAll();
 	}
 	
+	@GetMapping(path="/test")
+	public String test() {
+		// This returns a JSON or XML with the users
+		return "working!";
+	}
+	
+	
 	@GetMapping(path="/getOne/{emailid}")
 	public @ResponseBody Iterable<Person> getUser(@PathVariable String emailid) {
 		// This returns a JSON or XML with the users
