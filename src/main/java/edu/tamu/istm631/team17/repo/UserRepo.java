@@ -6,14 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import edu.tamu.istm631.team17.models.User;
+import edu.tamu.istm631.team17.models.Person;
 
-public interface UserRepo extends CrudRepository<User, Integer>
+public interface UserRepo extends CrudRepository<Person, Integer>
 {
 
-    List<User> findByemailid(String emailid);
+    List<Person> findByemailid(String emailid);
     
     @Query("SELECT u FROM User u WHERE LOWER(u.emailid) = LOWER(:emailid) and u.password = :password")
-    public User authenticate(@Param("emailid") String emailid, @Param("password") String password);
+    public Person authenticate(@Param("emailid") String emailid, @Param("password") String password);
 
 }
