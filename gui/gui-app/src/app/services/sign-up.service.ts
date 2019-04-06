@@ -37,4 +37,10 @@ export class SignUpService {
     return this.httpVar.post<User>('/api/login/authenticate', userInput);
       
 }
+
+  fetchAllUsers() :Observable<User[]>
+  {
+    
+    return this.httpVar.get<User[]>('/api/login/all');
+  }
 }
