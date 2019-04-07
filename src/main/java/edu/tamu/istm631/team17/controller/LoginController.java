@@ -20,7 +20,7 @@ import edu.tamu.istm631.team17.repo.PersonRepo;
 
 @RestController    
 @RequestMapping(path="/login") 
-@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class LoginController
 {
@@ -29,7 +29,7 @@ public class LoginController
 	private PersonRepo userRepo;
 
 	@PostMapping(path="/add") 
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody String addNewUser (@RequestBody Person user) {
 		// @ResponseBody means the returned String is the response, not a view name
@@ -44,7 +44,7 @@ public class LoginController
 	}
 
 	@GetMapping(path="/all")
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody Iterable<Person> getAllUsers() {
 		// This returns a JSON or XML with the users
@@ -52,7 +52,7 @@ public class LoginController
 	}
 	
 	@GetMapping(path="/test")
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public String test() {
 		// This returns a JSON or XML with the users
@@ -61,7 +61,7 @@ public class LoginController
 	
 	
 	@GetMapping(path="/getOne/{emailid}")
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody Iterable<Person> getUser(@PathVariable String emailid) {
 		// This returns a JSON or XML with the users
@@ -69,7 +69,7 @@ public class LoginController
 	}
 	
 	@PostMapping(path="/authenticate") 
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public Person authenticate (@RequestBody Person user) {
 		// @ResponseBody means the returned String is the response, not a view name
