@@ -20,6 +20,8 @@ import edu.tamu.istm631.team17.repo.PersonRepo;
 
 @RestController    
 @RequestMapping(path="/login") 
+@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 public class LoginController
 {
 
@@ -27,6 +29,8 @@ public class LoginController
 	private PersonRepo userRepo;
 
 	@PostMapping(path="/add") 
+	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 	public @ResponseBody String addNewUser (@RequestBody Person user) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -40,14 +44,16 @@ public class LoginController
 	}
 
 	@GetMapping(path="/all")
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com/")
+	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 	public @ResponseBody Iterable<Person> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepo.findAll();
 	}
 	
 	@GetMapping(path="/test")
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com/")
+	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 	public String test() {
 		// This returns a JSON or XML with the users
 		return "working!";
@@ -55,13 +61,16 @@ public class LoginController
 	
 	
 	@GetMapping(path="/getOne/{emailid}")
+	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 	public @ResponseBody Iterable<Person> getUser(@PathVariable String emailid) {
 		// This returns a JSON or XML with the users
 		return userRepo.findByemailid(emailid);
 	}
 	
 	@PostMapping(path="/authenticate") 
-	@CrossOrigin(origins = "https://setmyhome.herokuapp.com/")
+	@CrossOrigin(origins = "https://setmyhome.herokuapp.com")
+
 	public Person authenticate (@RequestBody Person user) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
