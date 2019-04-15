@@ -1,5 +1,7 @@
 package edu.tamu.istm631.team17.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,61 +14,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.tamu.istm631.team17.models.Booking;
 import edu.tamu.istm631.team17.models.Person;
+import edu.tamu.istm631.team17.repo.BookingRepo;
 import edu.tamu.istm631.team17.repo.PersonRepo;
 
 
 
 
 @RestController    
-@RequestMapping(path="/login") 
+@RequestMapping(path="/booking") 
 @CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-public class LoginController
+public class BookingController
 {
 
 	@Autowired 
-	private PersonRepo userRepo;
+	private BookingRepo bookingRepo;
 
 	@PostMapping(path="/add") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-	public @ResponseBody String addNewUser (@RequestBody Person user) {
+	public @ResponseBody String addNewBooking (@RequestBody Booking booking) {
 		
-		System.out.println(user.getFname()+" hii ");
-		userRepo.save(user);
+		System.out.println(booking.getTimeSlot()+" hii ");
+		bookingRepo.save(booking);
 		return "true";
 	}
 
-	@GetMapping(path="/all")
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-	public @ResponseBody Iterable<Person> getAllUsers() {
-		return userRepo.findAll();
-	}
-	
-	@GetMapping(path="/test")
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
-
-	public String test() {
-		return "working!";
-	}
 	
 	
-	@GetMapping(path="/getOne/{emailid}")
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
-
-	public @ResponseBody Iterable<Person> getUser(@PathVariable String emailid) {
-		return userRepo.findByemailid(emailid);
-	}
 	
-	@PostMapping(path="/authenticate") 
+	
+	@GetMapping(path="/fetchAll") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-	public Person authenticate (@RequestBody Person user) {
+	public List<Booking> fetchAll () {
 		
-		System.out.println(user.getEmailid()+" hii "+user.getPassword());
-		return userRepo.authenticate(user.getEmailid(), user.getPassword());
+		return bookingRepo.fetchAll();
 		
 	}
 	
