@@ -42,6 +42,14 @@ public class BookingController
 		return "true";
 	}
 
+	@GetMapping(path="/fetch/{username}") 
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+
+	public List<Booking> fetchBy (@PathVariable String username) {
+		
+		return bookingRepo.findByuserName(username);
+		
+	}
 
 	
 	

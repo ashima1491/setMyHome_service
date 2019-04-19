@@ -14,4 +14,6 @@ public interface BookingRepo  extends CrudRepository<Booking, Integer>
 
 	 @Query(" SELECT b FROM Booking b order by bookingId, timeSlot ")
 	  public List<Booking> fetchAll();
+	 
+	 public List<Booking> findByuserName(String userName);
 }
