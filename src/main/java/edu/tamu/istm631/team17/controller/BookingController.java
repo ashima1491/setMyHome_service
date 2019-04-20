@@ -56,7 +56,7 @@ public class BookingController
 	
 	
 	@GetMapping(path="/fetchAll") 
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public List<Booking> fetchAll () {
 		

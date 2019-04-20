@@ -20,8 +20,31 @@ public class Booking {
 	private String heavyCategoryCount;
 	private String mediumCategoryCount;
 	private String lowCategoryCount;
+	
+	
+	private String heavyFurnitureName;
+	private String mediumFurnitureName;
+	private String smallFurnitureName;
 	private String timeSlot;
 	
+	public String getHeavyFurnitureName() {
+		return heavyFurnitureName;
+	}
+	public void setHeavyFurnitureName(String heavyFurnitureName) {
+		this.heavyFurnitureName = heavyFurnitureName;
+	}
+	public String getMediumFurnitureName() {
+		return mediumFurnitureName;
+	}
+	public void setMediumFurnitureName(String mediumFurnitureName) {
+		this.mediumFurnitureName = mediumFurnitureName;
+	}
+	public String getSmallFurnitureName() {
+		return smallFurnitureName;
+	}
+	public void setSmallFurnitureName(String smallFurnitureName) {
+		this.smallFurnitureName = smallFurnitureName;
+	}
 	public String getUserType() {
 		return userType;
 	}
