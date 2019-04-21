@@ -1,5 +1,7 @@
 package edu.tamu.istm631.team17.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +41,9 @@ public class EventController
 	@GetMapping(path="/all")
 //	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-	public @ResponseBody Iterable<Event> getAllEvents() {
+	public List<Event> getAllEvents() {
 		// This returns a JSON or XML with the users
-		return eventRepo.findAll();
+		return eventRepo.fetchAll();
 	}
 	
 	

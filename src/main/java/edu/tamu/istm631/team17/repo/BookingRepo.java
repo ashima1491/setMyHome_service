@@ -13,7 +13,7 @@ public interface BookingRepo  extends CrudRepository<Booking, Integer>
 
 {
 
-	 @Query(" SELECT b FROM Booking b order by bookingId, timeSlot ")
+	 @Query(" SELECT b FROM Booking b order by bookingId desc, timeSlot ")
 	  public List<Booking> fetchAll();
 	 
 	 public List<Booking> findByperson(Person person);

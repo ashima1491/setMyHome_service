@@ -41,7 +41,7 @@ public class LoginController
 		}
 		else
 		{
-			return "A user with this email already exists!";
+			return "false";
 		}
 		
 	}

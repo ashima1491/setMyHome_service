@@ -55,10 +55,10 @@ public class BookingController
 	@PostMapping(path="/add") 
 //	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
-	public @ResponseBody String addNewBooking (@RequestBody Booking bookingInput) {
+	public @ResponseBody String addNewBooking (@RequestBody BookingInput bookingInput) {
 		
-		Optional<Event> event=eventRepo.findById(bookingInput.getEvent().getEventId());
-		Optional<Person> person=personRepo.findById(bookingInput.getPerson().getUserId());
+		Optional<Event> event=eventRepo.findById(bookingInput.getEventId());
+		Optional<Person> person=personRepo.findById(bookingInput.getPersonId());
 
 		Booking booking = new Booking();
 		booking.setEvent(event.get());
@@ -66,14 +66,18 @@ public class BookingController
 		booking.setTimeSlot(bookingInput.getTimeSlot());
 		
 		Set<BookingFurniture> set= new HashSet<>();
-		for(BookingFurniture  bff: bookingInput.getBookedFurniture())
+		for(Furniture  fr: bookingInput.getFurnitureList())
 		{
-			Optional<Furniture> furniture=furnitureRepo.findById(bff.getFurniture().getFurnitureId());
-			BookingFurniture bf= new BookingFurniture(furniture.get(),bff.getCount());
+			Optional<Furniture> furniture=furnitureRepo.findById(fr.getFurnitureId());
+			BookingFurniture bf= new BookingFurniture(furniture.get(),fr.getCount());
 			bf.setBooking(booking);
 			set.add(bf);
+			System.out.println("booking"+bf.getBooking());
+			
 		}
 		booking.setBookedFurniture(set);
+		System.out.println("set "+booking.getBookedFurniture());
+
 		
 		bookingRepo.save(booking);
 		return "true";

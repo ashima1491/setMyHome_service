@@ -79,11 +79,11 @@ public class BookingFurnitureController {
 		
 		for(BookingFurniture bf: bookedFurniture)
 		{
-			System.out.println(bf +"   "+bf.getBookingFurnitureId());
+			//System.out.println(bf +"   "+bf.getBookingFurnitureId());
 			Integer key= bf.getFurniture().getFurnitureId();
 			String type= bf.getBooking().getPerson().getType();
 			Integer qty= bf.getCount();
-			System.out.println(key +" "+qty);
+			//System.out.println(key +" "+qty);
 			
 			if(map.containsKey(key))
 			{
