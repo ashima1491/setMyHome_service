@@ -2,7 +2,6 @@ package edu.tamu.istm631.team17.repo;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import edu.tamu.istm631.team17.models.Furniture;

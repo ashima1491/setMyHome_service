@@ -13,8 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Furniture {
 	
 	@Id
@@ -26,6 +31,7 @@ public class Furniture {
 	private Integer count;
 	
 	@OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL)
+	@JsonIgnore
     private Set<BookingFurniture> bookedFurniture= new HashSet<>();
 
 //	@Override

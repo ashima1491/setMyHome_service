@@ -1,5 +1,6 @@
 package edu.tamu.istm631.team17.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,7 +20,7 @@ import edu.tamu.istm631.team17.repo.EventRepo;
 
 @RestController    
 @RequestMapping(path="/bookedFurniture") 
-@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class BookingFurnitureController {
 
@@ -27,10 +28,51 @@ public class BookingFurnitureController {
 	@Autowired 
 	private BookingFurnitureRepo bookingFurnitureRepo;
 	
-	@GetMapping(path="/stock") 
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	
 
-	public HashMap<Integer, Integer> stock () {
+//	public HashMap<Integer, Integer> stock () {
+//		
+//		Iterable<BookingFurniture> bookedFurniture =bookingFurnitureRepo.findAll();
+//		HashMap<Integer, Integer> map = new HashMap<>();
+//		
+//		for(BookingFurniture bf: bookedFurniture)
+//		{
+//			System.out.println(bf +"   "+bf.getBookingFurnitureId());
+//			Integer key= bf.getFurniture().getFurnitureId();
+//			String type= bf.getBooking().getPerson().getType();
+//			Integer qty= bf.getCount();
+//			System.out.println(key +" "+qty);
+//			
+//			if(map.containsKey(key))
+//			{
+//				if("donor".equals(type))
+//				map.put(key, map.get(key)+qty);
+//				
+//				if("student".equals(type))
+//				map.put(key, map.get(key)-qty);
+//			}
+//			else
+//			{
+//				    if("donor".equals(type))
+//				    {
+//				    	map.put(key, qty);
+//				    	
+//				    }
+//					
+//					
+//					if("student".equals(type))
+//					map.put(key, -qty);
+//				
+//			}
+//		}
+//		
+//		return map;
+//		
+//	}
+	
+	@GetMapping(path="/stock") 
+//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+        public List<BookingFurniture> stock () {
 		
 		Iterable<BookingFurniture> bookedFurniture =bookingFurnitureRepo.findAll();
 		HashMap<Integer, Integer> map = new HashMap<>();
@@ -66,7 +108,20 @@ public class BookingFurnitureController {
 			}
 		}
 		
-		return map;
+		
+		List<BookingFurniture> list = new ArrayList<>();
+		for(Integer key: map.keySet())
+		{
+			BookingFurniture bf = new BookingFurniture();
+			Furniture f = new Furniture();
+			f.setFurnitureId(key);
+			bf.setFurniture(f);
+			bf.setCount(map.get(key));
+			
+			list.add(bf);
+		}
+		return list;
 		
 	}
+	
 }

@@ -34,7 +34,7 @@ import edu.tamu.istm631.team17.repo.PersonRepo;
 
 @RestController    
 @RequestMapping(path="/booking") 
-@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class BookingController
 {
@@ -53,7 +53,7 @@ public class BookingController
 	private FurnitureRepo furnitureRepo;
 
 	@PostMapping(path="/add") 
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody String addNewBooking (@RequestBody Booking bookingInput) {
 		
@@ -66,10 +66,10 @@ public class BookingController
 		booking.setTimeSlot(bookingInput.getTimeSlot());
 		
 		Set<BookingFurniture> set= new HashSet<>();
-		for(BookingFurniture  fr: bookingInput.getBookedFurniture())
+		for(BookingFurniture  bff: bookingInput.getBookedFurniture())
 		{
-			Optional<Furniture> furniture=furnitureRepo.findById(fr.getFurniture().getFurnitureId());
-			BookingFurniture bf= new BookingFurniture(furniture.get(),fr.getCount());
+			Optional<Furniture> furniture=furnitureRepo.findById(bff.getFurniture().getFurnitureId());
+			BookingFurniture bf= new BookingFurniture(furniture.get(),bff.getCount());
 			bf.setBooking(booking);
 			set.add(bf);
 		}
@@ -80,7 +80,7 @@ public class BookingController
 	}
 
 	@GetMapping(path="/fetch/{userId}") 
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public List<Booking> fetchByUser (@PathVariable Integer userId) {
 		

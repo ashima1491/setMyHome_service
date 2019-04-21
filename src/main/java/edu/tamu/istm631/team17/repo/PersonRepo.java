@@ -11,7 +11,7 @@ import edu.tamu.istm631.team17.models.Person;
 public interface PersonRepo extends CrudRepository<Person, Integer>
 {
 
-    List<Person> findByemailid(String emailid);
+    Person findByemailid(String emailid);
     
     @Query("SELECT u FROM Person u WHERE LOWER(u.emailid) = LOWER(:emailid) and u.password = :password")
     public Person authenticate(@Param("emailid") String emailid, @Param("password") String password);

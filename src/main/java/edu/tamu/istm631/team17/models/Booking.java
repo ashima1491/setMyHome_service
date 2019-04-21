@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -30,9 +32,11 @@ public class Booking {
 	private Event event;
 	
 	@OneToOne
+	
 	private Person person;
 	
 	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+	@JsonIgnore
     private Set<BookingFurniture> bookedFurniture=new HashSet<>();
 
 	

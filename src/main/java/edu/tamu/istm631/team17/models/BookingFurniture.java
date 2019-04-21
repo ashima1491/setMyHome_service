@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class BookingFurniture implements Serializable {
 
@@ -62,7 +64,7 @@ public class BookingFurniture implements Serializable {
 	}
 
 
-
+	
 	public Furniture getFurniture() {
 		return furniture;
 	}
