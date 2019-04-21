@@ -20,7 +20,7 @@ import edu.tamu.istm631.team17.repo.EventRepo;
 
 @RestController    
 @RequestMapping(path="/bookedFurniture") 
-//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class BookingFurnitureController {
 
@@ -71,7 +71,7 @@ public class BookingFurnitureController {
 //	}
 	
 	@GetMapping(path="/stock") 
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
         public List<BookingFurniture> stock () {
 		
 		Iterable<BookingFurniture> bookedFurniture =bookingFurnitureRepo.findAll();

@@ -20,7 +20,7 @@ import edu.tamu.istm631.team17.repo.EventRepo;
 
 @RestController    
 @RequestMapping(path="/event") 
-//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class EventController
 {
@@ -29,7 +29,7 @@ public class EventController
 	private EventRepo eventRepo;
 
 	@PostMapping(path="/add") 
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody String addNewEvent (@RequestBody Event event) {
 		
@@ -39,7 +39,7 @@ public class EventController
 	}
 
 	@GetMapping(path="/all")
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public List<Event> getAllEvents() {
 		// This returns a JSON or XML with the users

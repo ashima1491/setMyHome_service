@@ -34,7 +34,7 @@ import edu.tamu.istm631.team17.repo.PersonRepo;
 
 @RestController    
 @RequestMapping(path="/booking") 
-//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 public class BookingController
 {
@@ -53,7 +53,7 @@ public class BookingController
 	private FurnitureRepo furnitureRepo;
 
 	@PostMapping(path="/add") 
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody String addNewBooking (@RequestBody BookingInput bookingInput) {
 		
@@ -84,7 +84,7 @@ public class BookingController
 	}
 
 	@GetMapping(path="/fetch/{userId}") 
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public List<Booking> fetchByUser (@PathVariable Integer userId) {
 		

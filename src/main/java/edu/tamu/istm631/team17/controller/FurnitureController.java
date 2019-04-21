@@ -15,14 +15,14 @@ import edu.tamu.istm631.team17.repo.FurnitureRepo;
 
 @RestController    
 @RequestMapping(path="/furniture") 
-//@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 public class FurnitureController {
 
 	@Autowired 
 	private FurnitureRepo furnitureRepo;
 
 	@PostMapping(path="/add") 
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody String addNewFurniture (@RequestBody Furniture funrniture) {
 		
@@ -32,7 +32,7 @@ public class FurnitureController {
 	}
 	
 	@GetMapping(path="/getByCategory/{category}")
-//	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
 	public @ResponseBody Iterable<Furniture> getByCategory(@PathVariable String category) {
 		return furnitureRepo.findBycategory(category);
