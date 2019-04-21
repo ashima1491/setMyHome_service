@@ -16,4 +16,6 @@ public interface PersonRepo extends CrudRepository<Person, Integer>
     @Query("SELECT u FROM Person u WHERE LOWER(u.emailid) = LOWER(:emailid) and u.password = :password")
     public Person authenticate(@Param("emailid") String emailid, @Param("password") String password);
 
+    
+//     List<Person> findBytype (String type);
 }

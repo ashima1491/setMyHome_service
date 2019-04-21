@@ -1,9 +1,23 @@
 package edu.tamu.istm631.team17.models;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+
+
 
 @Entity
 public class Booking {
@@ -12,91 +26,59 @@ public class Booking {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer bookingId;
 	
-	private String eventName;
+	@OneToOne
+	private Event event;
 	
-	private String userName;
+	@OneToOne
+	private Person person;
 	
-	private String userType;
-	private String heavyCategoryCount;
-	private String mediumCategoryCount;
-	private String lowCategoryCount;
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    private Set<BookingFurniture> bookedFurniture=new HashSet<>();
+
 	
-	
-	private String heavyFurnitureName;
-	private String mediumFurnitureName;
-	private String smallFurnitureName;
 	private String timeSlot;
 	
-	public String getHeavyFurnitureName() {
-		return heavyFurnitureName;
-	}
-	public void setHeavyFurnitureName(String heavyFurnitureName) {
-		this.heavyFurnitureName = heavyFurnitureName;
-	}
-	public String getMediumFurnitureName() {
-		return mediumFurnitureName;
-	}
-	public void setMediumFurnitureName(String mediumFurnitureName) {
-		this.mediumFurnitureName = mediumFurnitureName;
-	}
-	public String getSmallFurnitureName() {
-		return smallFurnitureName;
-	}
-	public void setSmallFurnitureName(String smallFurnitureName) {
-		this.smallFurnitureName = smallFurnitureName;
-	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
 	public Integer getBookingId() {
 		return bookingId;
 	}
+
 	public void setBookingId(Integer bookingId) {
 		this.bookingId = bookingId;
 	}
-	
-	
-	public String getEventName() {
-		return eventName;
+
+	public Event getEvent() {
+		return event;
 	}
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
-	public String getUserName() {
-		return userName;
+
+	public Person getPerson() {
+		return person;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
-	public String getHeavyCategoryCount() {
-		return heavyCategoryCount;
+
+
+	public Set<BookingFurniture> getBookedFurniture() {
+		return bookedFurniture;
 	}
-	public void setHeavyCategoryCount(String heavyCategoryCount) {
-		this.heavyCategoryCount = heavyCategoryCount;
+
+	public void setBookedFurniture(Set<BookingFurniture> bookedFurniture) {
+		this.bookedFurniture = bookedFurniture;
 	}
-	public String getMediumCategoryCount() {
-		return mediumCategoryCount;
-	}
-	public void setMediumCategoryCount(String mediumCategoryCount) {
-		this.mediumCategoryCount = mediumCategoryCount;
-	}
-	public String getLowCategoryCount() {
-		return lowCategoryCount;
-	}
-	public void setLowCategoryCount(String lowCategoryCount) {
-		this.lowCategoryCount = lowCategoryCount;
-	}
+
 	public String getTimeSlot() {
 		return timeSlot;
 	}
+
 	public void setTimeSlot(String timeSlot) {
 		this.timeSlot = timeSlot;
 	}
+
 	
-
-
 
 }

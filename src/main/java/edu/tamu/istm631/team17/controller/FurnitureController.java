@@ -37,4 +37,6 @@ public class FurnitureController {
 	public @ResponseBody Iterable<Furniture> getByCategory(@PathVariable String category) {
 		return furnitureRepo.findBycategory(category);
 	}
+	
+	
 }

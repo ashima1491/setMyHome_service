@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import edu.tamu.istm631.team17.models.Booking;
+import edu.tamu.istm631.team17.models.Person;
 
 public interface BookingRepo  extends CrudRepository<Booking, Integer>
 
@@ -15,5 +16,7 @@ public interface BookingRepo  extends CrudRepository<Booking, Integer>
 	 @Query(" SELECT b FROM Booking b order by bookingId, timeSlot ")
 	  public List<Booking> fetchAll();
 	 
-	 public List<Booking> findByuserName(String userName);
+	 public List<Booking> findByperson(Person person);
+	 
+	 
 }
