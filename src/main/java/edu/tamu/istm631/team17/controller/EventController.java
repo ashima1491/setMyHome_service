@@ -15,7 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.tamu.istm631.team17.models.Event;
 import edu.tamu.istm631.team17.repo.EventRepo;
 
-
+/**
+ * This class is a controller for forwarding requests for giveaway 
+ * event related activity. 
+ * 
+ *
+ */
 
 
 @RestController    
@@ -28,6 +33,13 @@ public class EventController
 	@Autowired 
 	private EventRepo eventRepo;
 
+	
+	/**
+    * This method adds a new event into the database
+    *
+    *@return true if event created successfully
+    *  
+    */
 	@PostMapping(path="/add") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
@@ -37,6 +49,13 @@ public class EventController
 		eventRepo.save(event);
 		return "true";
 	}
+	
+	/**
+	    * This method retrieves all events
+	    *
+	    *@return list of events
+	    *  
+	    */
 
 	@GetMapping(path="/all")
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})

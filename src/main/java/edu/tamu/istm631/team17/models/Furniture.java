@@ -16,35 +16,29 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * 
+ * This class serves as a data model
+ * (data structure) to store a furniture item.
+ * It has furniture category which can be 'Heavy', 'Medium', 'Small',
+ * furniture name and default count of 0.
+ *
+ */
 
 @Entity
-
 public class Furniture {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer furnitureId;
-	
 	private String category;
 	private String furnitureName;
 	private Integer count;
 	
-	@OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JsonIgnore
     private Set<BookingFurniture> bookedFurniture= new HashSet<>();
 
-//	@Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Furniture)) return false;
-//        Furniture that = (Furniture) o;
-//        return furnitureId.equals(that.getFurnitureId());
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(furnitureId);
-//    }
 	
 	public Integer getCount() {
 		return count;

@@ -2,14 +2,18 @@ package edu.tamu.istm631.team17.models;
 
 import java.util.List;
 
+/**
+ * This class is used for providing input to booking related 
+ * functions. It represents the eventId, personId, furniture list and timeslot 
+ * captured from the user interface
+ *
+ */
 public class BookingInput {
 
 	private Integer bookingId;
 	private Integer eventId;
 	private Integer personId;
-
 	private List<Furniture> furnitureList;
-
 	private String timeSlot;
 
 	public Integer getBookingId() {

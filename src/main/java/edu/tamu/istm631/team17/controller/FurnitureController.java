@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.tamu.istm631.team17.models.Furniture;
 import edu.tamu.istm631.team17.repo.FurnitureRepo;
 
+/**
+ * This class is a controller for forwarding requests for furniture
+ *  related activity. 
+ * 
+ *
+ */
+
 @RestController    
 @RequestMapping(path="/furniture") 
 @CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
@@ -21,6 +28,13 @@ public class FurnitureController {
 	@Autowired 
 	private FurnitureRepo furnitureRepo;
 
+	
+	/**
+	    * This method adds a new furniture into the database
+	    *
+	    *@return true if furniture added successfully
+	    *  
+	    */
 	@PostMapping(path="/add") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
@@ -30,6 +44,15 @@ public class FurnitureController {
 		furnitureRepo.save(funrniture);
 		return "true";
 	}
+	
+	
+	/**
+	    * This method retrieves list of furniture in a particular category 
+	    * like 'Heavy', 'Medium', 'Small'
+	    *
+	    *@return list of furniture
+	    *  
+	    */
 	
 	@GetMapping(path="/getByCategory/{category}")
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})

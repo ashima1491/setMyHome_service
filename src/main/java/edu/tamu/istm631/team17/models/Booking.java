@@ -19,7 +19,13 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-
+/**
+ * 
+ * This class serves as model(data structure) for booking related activity
+ * A booking is for an event, done by a person for a specific time slot.
+ * It also has an associated list of furniture that is dropped in case of donor, or
+ * picked up in case of student
+ */
 
 @Entity
 public class Booking {
@@ -32,10 +38,9 @@ public class Booking {
 	private Event event;
 	
 	@OneToOne
-	
 	private Person person;
 	
-	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "booking", cascade = CascadeType.ALL )
 	@JsonIgnore
     private Set<BookingFurniture> bookedFurniture=new HashSet<>();
 

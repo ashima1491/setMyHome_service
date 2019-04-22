@@ -18,6 +18,14 @@ import edu.tamu.istm631.team17.models.Furniture;
 import edu.tamu.istm631.team17.repo.BookingFurnitureRepo;
 import edu.tamu.istm631.team17.repo.EventRepo;
 
+
+/**
+ * This class is a controller for forwarding requests for 
+ * booked furniture related activity. 
+ * 
+ *
+ */
+
 @RestController    
 @RequestMapping(path="/bookedFurniture") 
 @CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
@@ -29,46 +37,15 @@ public class BookingFurnitureController {
 	private BookingFurnitureRepo bookingFurnitureRepo;
 	
 	
-
-//	public HashMap<Integer, Integer> stock () {
-//		
-//		Iterable<BookingFurniture> bookedFurniture =bookingFurnitureRepo.findAll();
-//		HashMap<Integer, Integer> map = new HashMap<>();
-//		
-//		for(BookingFurniture bf: bookedFurniture)
-//		{
-//			System.out.println(bf +"   "+bf.getBookingFurnitureId());
-//			Integer key= bf.getFurniture().getFurnitureId();
-//			String type= bf.getBooking().getPerson().getType();
-//			Integer qty= bf.getCount();
-//			System.out.println(key +" "+qty);
-//			
-//			if(map.containsKey(key))
-//			{
-//				if("donor".equals(type))
-//				map.put(key, map.get(key)+qty);
-//				
-//				if("student".equals(type))
-//				map.put(key, map.get(key)-qty);
-//			}
-//			else
-//			{
-//				    if("donor".equals(type))
-//				    {
-//				    	map.put(key, qty);
-//				    	
-//				    }
-//					
-//					
-//					if("student".equals(type))
-//					map.put(key, -qty);
-//				
-//			}
-//		}
-//		
-//		return map;
-//		
-//	}
+	/**
+	    * This method retreives the furniture with their maximum quantity available
+	    * for giveaway. It is calculated by subtracting the booked furniture by students from
+	    * the furniture donated by donors
+	    *
+	    *
+	    *@return list of furniture with quantity wrapped in BookingFurniture object
+	    *  
+	    */
 	
 	@GetMapping(path="/stock") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
@@ -79,11 +56,9 @@ public class BookingFurnitureController {
 		
 		for(BookingFurniture bf: bookedFurniture)
 		{
-			//System.out.println(bf +"   "+bf.getBookingFurnitureId());
 			Integer key= bf.getFurniture().getFurnitureId();
 			String type= bf.getBooking().getPerson().getType();
 			Integer qty= bf.getCount();
-			//System.out.println(key +" "+qty);
 			
 			if(map.containsKey(key))
 			{

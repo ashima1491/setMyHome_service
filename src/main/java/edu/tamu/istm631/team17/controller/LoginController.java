@@ -28,6 +28,14 @@ public class LoginController
 	@Autowired 
 	private PersonRepo userRepo;
 
+	
+	/**
+	    * This method creates a new user in the database
+	    *@param user who is to be signed up in the system
+	    *@return true if user is successfully signed up, else false
+	    *  
+	    */
+	
 	@PostMapping(path="/add") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
@@ -46,6 +54,13 @@ public class LoginController
 		
 	}
 
+	/**
+	    * This retrieves list of all users in the database
+	    *
+	    *@return list of persons
+	    *  
+	    */
+	
 	@GetMapping(path="/all")
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
 
@@ -53,12 +68,14 @@ public class LoginController
 		return userRepo.findAll();
 	}
 	
-	@GetMapping(path="/test")
-	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
-
-	public String test() {
-		return "working!";
-	}
+	
+	/**
+	    * This retrieves a user by his/her email id
+	    *
+	    *@param emailid of a user
+	    *@return the user if a matching email id is found else null
+	    *  
+	    */
 	
 	
 	@GetMapping(path="/getOne/{emailid}")
@@ -67,6 +84,17 @@ public class LoginController
 	public @ResponseBody Person getUser(@PathVariable String emailid) {
 		return userRepo.findByemailid(emailid);
 	}
+	
+	
+	/**
+	    * This authenticates a user by his/her unique combination
+	    * of email id and password
+	    *
+	    *@param user who is to be authenticated
+	    *@return person with details if authenticated else null
+	    *  
+	    */
+	
 	
 	@PostMapping(path="/authenticate") 
 	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
@@ -78,6 +106,17 @@ public class LoginController
 		
 	}
 	
+	
+	/**
+	    * This method serves as a test method
+	    */
+	
+	@GetMapping(path="/test")
+	@CrossOrigin(origins = {"https://setmyhome.herokuapp.com", "http://localhost:4200"})
+
+	public String test() {
+		return "working!";
+	}
 	
 	
 }
