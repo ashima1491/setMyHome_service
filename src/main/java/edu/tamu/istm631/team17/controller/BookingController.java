@@ -127,8 +127,13 @@ public class BookingController {
 	public Iterable<Booking> fetchAll() {
 
 		Iterable<Booking> list = bookingRepo.findAll();
-		for (Booking booking : list) {
-			System.out.println(booking.getBookedFurniture().size());
+		for (Booking booking : list) 
+		{
+			for(BookingFurniture bf: booking.getBookedFurniture())
+			{
+				System.out.println(bf.getFurniture());
+			}
+			
 		}
 		return list;
 

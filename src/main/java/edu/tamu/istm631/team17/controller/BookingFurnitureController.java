@@ -17,6 +17,7 @@ import edu.tamu.istm631.team17.models.BookingFurniture;
 import edu.tamu.istm631.team17.models.Furniture;
 import edu.tamu.istm631.team17.repo.BookingFurnitureRepo;
 import edu.tamu.istm631.team17.repo.EventRepo;
+import edu.tamu.istm631.team17.repo.FurnitureRepo;
 
 
 /**
@@ -35,6 +36,9 @@ public class BookingFurnitureController {
 	
 	@Autowired 
 	private BookingFurnitureRepo bookingFurnitureRepo;
+	
+	@Autowired 
+	private FurnitureRepo furnitureRepo;
 	
 	
 	/**
@@ -83,7 +87,16 @@ public class BookingFurnitureController {
 			}
 		}
 		
-		
+	    Iterable<Furniture> furnitures= furnitureRepo.findAll();
+	    
+	    for(Furniture fr : furnitures  )
+	    {
+	    	if(!map.containsKey(fr.getFurnitureId()))
+	    	{
+	    		map.put(fr.getFurnitureId(), 0);
+	    	}
+	    }
+	    
 		List<BookingFurniture> list = new ArrayList<>();
 		for(Integer key: map.keySet())
 		{
